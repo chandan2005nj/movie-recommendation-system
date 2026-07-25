@@ -1,0 +1,20 @@
+tensorflow
+transformers
+torch
+joblib
+starlette
+
+# Backend (FastAPI)
+fastapi
+uvicorn[standard]
+httpx
+pydantic
+python-dotenv
+pandas>=2.1.0
+numpy>=2.0.0
+scipy>=1.18.0
+scikit-learn==1.6.1
+
+# Frontend (Streamlit)
+streamlit
+requests
