@@ -1,7 +1,7 @@
 import os
 import pickle
 from typing import Optional, List, Dict, Any, Tuple
-
+import uvicorn
 import numpy as np
 import pandas as pd
 import httpx
@@ -280,6 +280,10 @@ async def attach_tmdb_card_by_title(title: str) -> Optional[TMDBMovieCard]:
 # =========================
 # STARTUP: LOAD PICKLES
 # =========================
+@app.get("/")
+def root():
+    return {"message": "API is running"}
+
 @app.on_event("startup")
 def load_pickles():
     global df, indices_obj, tfidf_matrix, tfidf_obj, TITLE_TO_IDX
@@ -473,4 +477,11 @@ async def search_bundle(
         movie_details=details,
         tfidf_recommendations=tfidf_items,
         genre_recommendations=genre_recs,
+    )
+
+if __name__ == "__main__":
+    uvicorn.run(
+        "main:app",
+        host="0.0.0.0",
+        port=int(os.environ.get("PORT", 8000))
     )

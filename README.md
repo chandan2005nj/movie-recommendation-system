@@ -18,17 +18,17 @@ A full-stack movie recommendation system that combines **content-based filtering
 ## 🏗️ Architecture
 
 ```
-┌─────────────────┐        HTTP        ┌──────────────────┐        HTTP        ┌─────────────┐
-│  Streamlit UI    │ ─────────────────▶ │   FastAPI Backend │ ─────────────────▶ │  TMDB API   │
-│    (app.py)      │ ◀───────────────── │     (main.py)      │ ◀───────────────── │             │
-└─────────────────┘                    └─────────┬─────────┘                    └─────────────┘
-                                                  │
-                                                  ▼
+┌─────────────────┐        HTTP        ┌──────────────────┐        HTTP        -┌─────────────┐
+│  Streamlit UI    │ ─────────────────▶ │ FastAPI Backend │ ─────────────────▶ │  TMDB API   │
+│    (app.py)      │ ◀───────────────── │     (main.py)   │ ◀───────────────── │             │
+└─────────────────┘                    └───────── ┬─────────┘                   └─────────────┘
+                                                  |
+                                                  ▼ 
                                      ┌─────────────────────────┐
-                                     │  Local TF-IDF artifacts   │
-                                     │  (df.pkl, tfidf.pkl,       │
-                                     │   tfidf_matrix.pkl,         │
-                                     │   indices.pkl)               │
+                                     │  Local TF-IDF artifacts │
+                                     │  (df.pkl, tfidf.pkl,    │
+                                     │   tfidf_matrix.pkl,     │
+                                     │   indices.pkl)          │
                                      └─────────────────────────┘
 ```
 
